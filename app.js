@@ -27,11 +27,11 @@ const CreateElement = () => {
 }
 
 const Shuffle = () => {
-    for(let i=0; i<20; i++){
-        const origin= Math.floor(Math.random() * currentPazule.length)
-        let move=Math.floor(Math.random() * currentPazule.length)
-        while(origin===move){
-            move=Math.floor(Math.random() * currentPazule.length)
+    for (let i = 0; i < 20; i++) {
+        const origin = Math.floor(Math.random() * currentPazule.length)
+        let move = Math.floor(Math.random() * currentPazule.length)
+        while (origin === move) {
+            move = Math.floor(Math.random() * currentPazule.length)
         }
         [currentPazule[origin], currentPazule[move]] = [currentPazule[move], currentPazule[origin]];
 
@@ -102,8 +102,8 @@ const Move = (e) => {
     const index = currentPazule.findIndex(ele => ele.toString() === e.target.innerText)
     const top = currentPazule[index - 4]
     const bottom = currentPazule[index + 4]
-    const right = currentPazule[index + 1]
-    const left = currentPazule[index - 1]
+    const right = (index + 1) % 4 !== 0 ? currentPazule[index + 1] : null
+    const left = index % 4 !== 0 ? currentPazule[index - 1] : null
 
     if (top === "") {
         ChangeEle(index, index - 4)
