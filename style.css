@@ -1,0 +1,35 @@
+.back {
+    width: 550px;
+    height: 550px;
+    background-color: #deb887;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+table {
+    width: 500px;
+    height: 500px;
+    /* /border-collapse: collapse; */
+    background-color: #f5deb3;
+}
+
+td {
+    border: 2px solid black;
+    font-size: 80px;
+    text-align: center;
+    cursor: pointer;
+    width: calc(100%/4);
+}
+
+.back-color{
+    background-color: white;
+}
+
+.anime {
+    transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.ans{
+    color:red
+}
