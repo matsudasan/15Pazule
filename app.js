@@ -60,8 +60,6 @@ const ChangeEle = (src, des) => {
     }
 
     [currentPazule[src], currentPazule[des]] = [currentPazule[des], currentPazule[src]]; //分割代入の末尾にセミコロンは必須
-    console.log(currentPazule)
-    console.log(ans)
     origin.addEventListener('transitionend', () => {
         for (let i = 0; i < currentPazule.length; i++) {
             items[i].classList.remove('anime')
