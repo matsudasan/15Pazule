@@ -1,6 +1,18 @@
+const back = document.querySelector('.back')
 const table = document.querySelector('table')
 const ans = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, ""]
 const currentPazule = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, ""]
+
+const Resize = () => {
+    if (window.innerWidth <= 480) {
+        table.style.height = table.clientWidth + "px"
+    } else {
+        table.removeAttribute('style')
+    }
+}
+
+window.onload = Resize
+window.onresize = Resize
 
 const Init = () => {
     Shuffle()
