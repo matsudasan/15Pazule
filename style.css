@@ -30,6 +30,10 @@ td {
     background-color: white;
 }
 
+.blank{
+    border: none;
+}
+
 .anime {
     transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1);
 }

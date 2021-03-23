@@ -27,7 +27,11 @@ const CreateElement = () => {
         for (let j = 0; j < 4; j++) {
             const td = document.createElement("td")
             if (currentPazule[num] === ans[num]) td.classList.add('ans')
-            if (!(currentPazule[num] === "")) td.classList.add('back-color')
+            if (currentPazule[num] === ""){
+                td.classList.add('blank')
+            }else{
+                td.classList.add('back-color')
+            }
             td.innerText = currentPazule[num]
             tr.appendChild(td)
             td.addEventListener('click', Move)
@@ -59,25 +63,23 @@ const ChangeEle = (src, des) => {
     blank.classList.add('anime')
     if (origin.getBoundingClientRect().y > blank.getBoundingClientRect().y) { //上に移動
         origin.style.transform = `translate(0px, -${origin.getBoundingClientRect().height + 2}px)` //+2はボーダーの太さ
-        blank.style.transform = `translate(0px, ${blank.getBoundingClientRect().height + 2}px)`
     } else if (origin.getBoundingClientRect().y < blank.getBoundingClientRect().y) {　//下に移動
         origin.style.transform = `translate(0px, ${origin.getBoundingClientRect().height + 2}px)`
-        blank.style.transform = `translate(0px, -${blank.getBoundingClientRect().height + 2}px)`
     } else if (origin.getBoundingClientRect().x < blank.getBoundingClientRect().x) { //右に移動
         origin.style.transform = `translate(${origin.getBoundingClientRect().width + 2}px, 0px)`
-        blank.style.transform = `translate(-${blank.getBoundingClientRect().width + 2}px, 0px)`
     } else if (origin.getBoundingClientRect().x > blank.getBoundingClientRect().x) { //左に移動
         origin.style.transform = `translate(-${origin.getBoundingClientRect().width + 2}px, 0px)`
-        blank.style.transform = `translate(${blank.getBoundingClientRect().width + 2}px, 0px)`
     }
 
     [currentPazule[src], currentPazule[des]] = [currentPazule[des], currentPazule[src]]; //分割代入の末尾にセミコロンは必須
     origin.addEventListener('transitionend', () => {
         for (let i = 0; i < currentPazule.length; i++) {
             items[i].classList.remove('anime')
+            items[i].classList.remove('blank')
             items[i].removeAttribute('style')
             items[i].innerText = currentPazule[i]
             if (items[i].innerText === "") {
+                items[i].classList.add('blank')
                 items[i].classList.remove('back-color')
             } else {
                 items[i].classList.add('back-color')
